@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+  version="5.0">
+
+    <!-- Application Name -->
+    <context-param>
+        <param-name>appName</param-name>
+        <param-value>Modern Store Electronics</param-value>
+    </context-param>
+
+    <!-- Maintenance Mode Flag (true/false) -->
+    <context-param>
+        <param-name>maintenanceMode</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
+    <!-- Maintenance Message -->
+    <context-param>
+        <param-name>maintenanceMessage</param-name>
+        <param-value>We are currently updating our servers to serve you better. We'll be back online shortly!</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>MaintenanceServlet</servlet-name>
+        <servlet-class>com.maintenance.MaintenanceServlet</servlet-class>
+    </servlet>
+
+    <!-- Specific mapping for /welcome -->
+    <servlet-mapping>
+        <servlet-name>MaintenanceServlet</servlet-name>
+        <url-pattern>/welcome</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping to root as well -->
+    <servlet-mapping>
+        <servlet-name>MaintenanceServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app>
